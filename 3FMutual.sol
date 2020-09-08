@@ -229,6 +229,7 @@ contract ThreeFMutual {
                 // calculate the outdated issuedInsurance
                 while (today < _today) {
                     issuedInsurance = issuedInsurance.sub(unitToExpire[today]);
+                    unitToExpire[today] = 0;
                     today += 1;
                 }
             }
@@ -413,6 +414,7 @@ contract ThreeFMutual {
         if(_today != 0){
             while(_today < today){
                 expiredUnit = expiredUnit.add(unitToExpirePlayer[_player][_today]);
+                unitToExpirePlayer[_player][_today] = 0;
                 _today += 1;
             }
             player[_player].units = player[_player].units.sub(expiredUnit);
