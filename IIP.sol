@@ -2,6 +2,7 @@ pragma solidity 0.5.16;
 
 contract Ownable {
     address public owner;
+    address public newOwner;
 
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
@@ -14,10 +15,18 @@ contract Ownable {
         _;
     }
 
-    function transferOwnership(address newOwner) public onlyOwner {
-        require(newOwner != address(0), "invalid address");
+    function transferOwnership(address _newOwner) public onlyOwner {
+        require(_newOwner != address(0), "Owner should not be 0 address");
+        require(_newOwner != owner, "The current and new owner cannot be the same");
+        require(_newOwner != newOwner, "Cannot set the candidate owner to the same address");
+        newOwner = _newOwner;
+    }
+
+    function acceptOwnership() public {
+        require(msg.sender == newOwner, "msg.sender and _newOwner must be the same");
         emit OwnershipTransferred(owner, newOwner);
         owner = newOwner;
+        newOwner = address(0);
     }
 }
 
@@ -35,7 +44,7 @@ contract InsuranceImprovementProposalProxy is Ownable {
         address payable self = address(uint160(address(this)));
         address payable sender = msg.sender;
 
-        (bool pass, ) = sender.call.value(self.balance / 2000)(""); // 0.5% rebate
+        (bool pass, ) = sender.call.value(self.balance / 200)(""); // 0.5% rebate
         (bool success, ) = IIP.call.value(self.balance)("");
         require(pass && success, "something went wrong");
     }
