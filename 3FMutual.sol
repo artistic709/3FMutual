@@ -347,7 +347,10 @@ contract ThreeFMutual {
     {
         // ticker
         if(tick()) {
-            sendContract(msg.sender, msg.value);
+            if(msg.sender == tx.origin)
+                sendHuman(msg.sender, msg.value);
+            else
+                sendContract(msg.sender, msg.value);
             return;
         }
 
