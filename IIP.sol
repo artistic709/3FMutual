@@ -33,7 +33,7 @@ contract Ownable {
 
 contract InsuranceImprovementProposalProxy is Ownable {
 
-    address payable public IIP = address(0xbeef);
+    address payable public IIP = address(0x616305e016B0539B8A550c9ECafe66BDb88956b2);
 
     modifier isHuman() {
         require(msg.sender == tx.origin, "sorry humans only");

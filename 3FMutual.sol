@@ -31,7 +31,7 @@ contract ThreeFMutual {
     Agency agency = Agency(0x7Bc360ebD65eFa503FF189A0F81f61f85D310Ec3);
     
     address payable constant private hakka = address(0xD0533664013a82c31584B7FFDB215139f38Ad77A);
-    address payable constant private IIP = address(0xbeef);
+    address payable constant private IIP = address(0x9933AD4D38702cdC28C5DB2F421F1F02CF530780);
     uint256 public end;
     bool public ended;
 
