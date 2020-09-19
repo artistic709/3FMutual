@@ -30,7 +30,7 @@ contract ThreeFMutual {
     Underwriter underwriter = Underwriter(0xE58cDe3CbEeCC8d9306f482729084B909Afa2357);
     Agency agency = Agency(0x7Bc360ebD65eFa503FF189A0F81f61f85D310Ec3);
     
-    address payable constant private hakka = address(0xD0533664013a82c31584B7FFDB215139f38Ad77A);
+    address payable constant private hakka = address(0x83D0D842e6DB3B020f384a2af11bD14787BEC8E7);
     address payable constant private IIP = address(0x9933AD4D38702cdC28C5DB2F421F1F02CF530780);
     uint256 public end;
     bool public ended;
