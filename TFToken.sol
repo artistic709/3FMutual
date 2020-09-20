@@ -188,6 +188,7 @@ contract TFToken is ERC20Mintable {
         (,,,,,balance,,,,,,) = Mutual.player(receiver);
         require(balance > claimedAmount[receiver]);
         _mint(receiver, balance.sub(claimedAmount[receiver]));
+        claimedAmount[receiver] = balance;
     }
 
 }
